@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切り替えタブ</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app" >
+        <div class="flex">
+            <div class="box" @click="clickTab1" :class="{active: (activeTab == 1)}">
+                タブ1
+            </div>
+            <div class="box" @click="clickTab2" :class="{active: (activeTab == 2)}">
+                タブ2
+            </div>
+            <div class="box" @click="clickTab3" :class="{active: (activeTab == 3)}">
+                タブ3
+            </div>
+        </div>
+        <p v-show="!activeTab == 0" style="font-size: 40px;">コンテンツ{{activeTab}}</p>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                activeTab: 0,
+            },
+            methods: {
+                clickTab1: function() {
+                    return this.activeTab = 1
+                },
+                clickTab2: function() {
+                    return this.activeTab = 2
+                },
+                clickTab3: function() {
+                    return this.activeTab = 3
+                }
+            }
+        });
+    </script>
+    <style>
+        .flex{
+            display: flex;
+        }
+        .box {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 2px 20px;
+            font-size: 30px;
+            margin-right: 5px;
+            background-color: #fff;
+            color: #000;
+        }
+        .active {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</body>
+</html>
